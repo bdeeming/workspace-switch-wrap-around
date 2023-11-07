@@ -1,4 +1,4 @@
-const Meta = imports.gi.Meta;
+import Meta from 'gi://Meta';
 
 function lastWSIndex() { return global.workspace_manager.n_workspaces - 1 }
 
@@ -28,14 +28,13 @@ function get_neighbor(direction) {
 
 let old = {};
 
-function init() {
-	old = Meta.Workspace.prototype.get_neighbor;
-}
+export default class WorkspaceSwitchWraparound {
+	enable() {
+		old = Meta.Workspace.prototype.get_neighbor;
+		Meta.Workspace.prototype.get_neighbor = get_neighbor;
+	}
 
-function enable() {
-	Meta.Workspace.prototype.get_neighbor = get_neighbor;
-}
-
-function disable() {
-	Meta.Workspace.prototype.get_neighbor = old;
+	disable() {
+		Meta.Workspace.prototype.get_neighbor = old;
+	}
 }
