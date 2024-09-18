@@ -1,6 +1,7 @@
 {
 	"shell-version": [
-		"45"
+		"45",
+		"46"
 	],
 	"uuid": "workspace-switch-wraparound@theychx.org",
 	"name": "Workspace Switch Wraparound",
